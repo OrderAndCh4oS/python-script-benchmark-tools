@@ -1,3 +1,5 @@
+import numpy as np
+
 from display_benchmark_results import display_benchmark_results
 from kwargs_provider.list_provider import ListProvider
 from kwargs_provider.np_arange_provider import NpARangeProvider
@@ -57,7 +59,7 @@ def run_scripts_with_n_sized_list(scripts, n):
 
 
 def run_scripts_with_n_sized_range(scripts, n):
-    arr_provider = ListProvider(n)
+    arr_provider = RangeProvider(n)
     return n, run_benchmarks(scripts, arr_provider, 1000)
 
 
@@ -79,37 +81,62 @@ if __name__ == '__main__':
         Script(reverse_sum, 'sarcoma')
     )
 
-    list_benchmarks = map(lambda n: run_scripts_with_n_sized_list(scripts, n), range(10, 1000, 10))
-    range_benchmarks = map(lambda n: run_scripts_with_n_sized_range(scripts, n), range(10, 1000, 10))
-    np_arange_benchmarks = map(lambda n: run_scripts_with_n_sized_np_arange(scripts, n), range(10, 1000, 10))
-    np_array_benchmarks = map(lambda n: run_scripts_with_n_sized_np_array(scripts, n), range(10, 1000, 10))
+    list_benchmarks = map(lambda n: run_scripts_with_n_sized_list(scripts, n), range(100, 1000, 100))
+    range_benchmarks = map(lambda n: run_scripts_with_n_sized_range(scripts, n), range(100, 1000, 100))
+    np_arange_benchmarks = map(lambda n: run_scripts_with_n_sized_np_arange(scripts, n), range(100, 10000, 100))
+    np_array_benchmarks = map(lambda n: run_scripts_with_n_sized_np_array(scripts, n), range(100, 10000, 100))
 
-    plots = {}
-    for n, results in list_benchmarks:
-        for result in results:
-            if not plots.get(result.name()):
-                plots[result.name()] = []
-            plots[result.name()].append([n, result.average()])
+    import matplotlib.pyplot as plt
 
-    for p in plots:
-        plot(plots[p], 1000, 0.00025)
+    def make_plots(benchmarks):
+        plots = {}
+        for n, results in benchmarks:
+            for result in results:
+                if not plots.get(result.name()):
+                    plots[result.name()] = ([], [])
+                plots[result.name()][0].append(n)
+                plots[result.name()][1].append(result.average())
 
-    print('List')
+        return plots
 
-    for _, results in list_benchmarks:
-        display_benchmark_results(results)
 
-    print('Range')
+    list_plots = make_plots(list_benchmarks)
+    range_plots = make_plots(range_benchmarks)
 
-    for _, results in range_benchmarks:
-        display_benchmark_results(results)
+    for name, values in list_plots.items():
+        plt.plot(values[0], values[1], label='List %s' % name)
 
-    print('Np Arange')
 
-    for _, results in np_arange_benchmarks:
-        display_benchmark_results(results)
+    for name, values in range_plots.items():
+        plt.plot(values[0], values[1], label='Range %s' % name)
 
-    print('Np Array')
+    plt.xlabel('n')
+    plt.ylabel('average')
 
-    for _, results in np_array_benchmarks:
-        display_benchmark_results(results)
+    plt.title("Benchmarks")
+    plt.legend()
+    plt.show()
+
+    #
+    # for p in plots:
+    #     plot(plots[p], 1000, 0.00025)
+
+    # print('List')
+    #
+    # for _, results in list_benchmarks:
+    #     display_benchmark_results(results)
+    #
+    # print('Range')
+    #
+    # for _, results in range_benchmarks:
+    #     display_benchmark_results(results)
+    #
+    # print('Np Arange')
+    #
+    # for _, results in np_arange_benchmarks:
+    #     display_benchmark_results(results)
+    #
+    # print('Np Array')
+    #
+    # for _, results in np_array_benchmarks:
+    #     display_benchmark_results(results)
