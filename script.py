@@ -3,7 +3,7 @@ class Script:
     def __init__(self, script, user=None):
         self._script = script
         self._user = user
-        self._kwargs = None
+        self._kwargs = {}
 
     def __repr__(self):
         return "%s(%s), %s" % (
@@ -14,7 +14,7 @@ class Script:
 
     def __call__(self, **kwargs):
         self._kwargs = kwargs
-        self._script(**kwargs)
+        return self._script(**kwargs)
 
     def name(self):
         return self._script.__name__
