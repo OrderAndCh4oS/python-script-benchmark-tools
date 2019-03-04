@@ -5,6 +5,8 @@ def make_plots(benchmarks):
     plots = {}
     for n, results in benchmarks:
         for result in results:
+            if result.min() is -1:
+                continue
             if not plots.get(result.name()):
                 plots[result.name()] = ([], [])
             plots[result.name()][0].append(n)
