@@ -1,0 +1,16 @@
+from random import randint
+
+from kwargs_provider.kwargs_provider import KwargsProvider
+
+
+class DictTVOValuesProvider(KwargsProvider):
+
+    def __init__(self, n):
+        self.arr = list(self.gen_arr(n))
+
+    def gen_arr(self, n):
+        for _ in range(n):
+            yield {'T': randint(1000, 9999), 'V': randint(0, 100), 'O': randint(0, 100)}
+
+    def get(self):
+        return {'arr': self.arr}

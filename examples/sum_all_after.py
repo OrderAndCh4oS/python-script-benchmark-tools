@@ -1,5 +1,8 @@
-import matplotlib.pyplot as plt
 
+import matplotlib.pyplot as plt
+import numpy as np
+
+from charts.plot_visual import display_benchmark_plot
 from kwargs_provider.list_provider import ListProvider
 from kwargs_provider.np_arange_provider import NpARangeProvider
 from kwargs_provider.np_array_provider import NpArrayProvider
@@ -51,46 +54,52 @@ def reverse_sum(arr):
     return r[::-1]
 
 
+def josep_joestar(arr):
+    if not isinstance(arr, list):
+        return False
+    for i in range(len(arr) - 2, -1, -1):
+        arr[i] += arr[i + 1]
+    return arr
+
+
+def alain_t(arr):
+    return np.sum(np.triu(arr), 1)
+
+
+def user2699(arr):
+    return np.add.accumulate(arr[::-1])[::-1]
+
+
+def stuart(arr):
+    return np.flip(np.cumsum(np.flip(arr)))
+
+
+def stuart_two(arr):
+    return np.cumsum(arr[::-1])[::-1]
+
+
+def student(arr):
+    return [sum(arr[i:]) for i in range(len(arr))]
+
+
 def run_scripts_with_n_sized_list(scripts, n):
     arr_provider = ListProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 1000)
+    return n, run_benchmarks(scripts, arr_provider, 100)
 
 
 def run_scripts_with_n_sized_range(scripts, n):
     arr_provider = RangeProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 1000)
+    return n, run_benchmarks(scripts, arr_provider, 100)
 
 
 def run_scripts_with_n_sized_np_arange(scripts, n):
     arr_provider = NpARangeProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 1000)
+    return n, run_benchmarks(scripts, arr_provider, 100)
 
 
 def run_scripts_with_n_sized_np_array(scripts, n):
     arr_provider = NpArrayProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 1000)
-
-
-def make_plots(benchmarks):
-    plots = {}
-    for n, results in benchmarks:
-        for result in results:
-            if not plots.get(result.name()):
-                plots[result.name()] = ([], [])
-            plots[result.name()][0].append(n)
-            plots[result.name()][1].append(result.average())
-
-    return plots.items()
-
-
-def display_benchmark_plot(benchmarks, title):
-    for name, values in make_plots(benchmarks):
-        plt.plot(values[0], values[1], label=name)
-    plt.xlabel('n')
-    plt.ylabel('average')
-    plt.title(title)
-    plt.legend()
-    plt.show()
+    return n, run_benchmarks(scripts, arr_provider, 100)
 
 
 if __name__ == '__main__':
@@ -98,13 +107,23 @@ if __name__ == '__main__':
         Script(reversed_loop, 'sarcoma'),
         Script(sum_first, 'sarcoma'),
         Script(Generator(), 'sarcoma'),
-        Script(reverse_sum, 'sarcoma')
+        Script(reverse_sum, 'sarcoma'),
+        Script(josep_joestar, 'josep_joestar'),
+        Script(alain_t, 'alain_t'),
+        Script(user2699, 'user2699'),
+        Script(stuart, 'stuart'),
+        Script(stuart_two, 'stuart2'),
+        Script(student, 'student'),
     )
 
-    list_benchmarks = map(lambda n: run_scripts_with_n_sized_list(scripts, n), range(100, 1000, 100))
-    range_benchmarks = map(lambda n: run_scripts_with_n_sized_range(scripts, n), range(100, 1000, 100))
-    np_arange_benchmarks = map(lambda n: run_scripts_with_n_sized_np_arange(scripts, n), range(100, 1000, 100))
-    np_array_benchmarks = map(lambda n: run_scripts_with_n_sized_np_array(scripts, n), range(100, 1000, 100))
+    start = 10
+    stop = 100
+    step = 10
+
+    list_benchmarks = map(lambda n: run_scripts_with_n_sized_list(scripts, n), range(start, stop, step))
+    range_benchmarks = map(lambda n: run_scripts_with_n_sized_range(scripts, n), range(start, stop, step))
+    np_arange_benchmarks = map(lambda n: run_scripts_with_n_sized_np_arange(scripts, n), range(start, stop, step))
+    np_array_benchmarks = map(lambda n: run_scripts_with_n_sized_np_array(scripts, n), range(start, stop, step))
 
     display_benchmark_plot(list_benchmarks, 'List Benchmarks')
     display_benchmark_plot(range_benchmarks, 'Range Benchmarks')
