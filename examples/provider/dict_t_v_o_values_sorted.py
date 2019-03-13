@@ -1,12 +1,13 @@
 from random import randint
 
-from kwargs_provider.kwargs_provider import KwargsProvider
+from script_benchmark_tools.kwargs_provider import KwargsProvider
 
 
-class DictTVOValuesProvider(KwargsProvider):
+class DictTVOValuesSortedProvider(KwargsProvider):
 
     def __init__(self, n):
         self.arr = list(self.gen_arr(n))
+        self.arr.sort(key=lambda val: val['T'])
 
     def gen_arr(self, n):
         for _ in range(n):

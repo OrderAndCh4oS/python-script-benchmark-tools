@@ -1,12 +1,12 @@
 from itertools import groupby
 from operator import itemgetter
 
-from charts.plot_visual import display_benchmark_plot
-from display_benchmark_results import display_benchmark_results
-from kwargs_provider.dict_t_v_o_values import DictTVOValuesProvider
-from kwargs_provider.dict_t_v_o_values_sorted import DictTVOValuesSortedProvider
-from run_benchmarks import run_benchmarks
-from script import Script
+from script_benchmark_tools.charts import display_benchmark_plot
+from script_benchmark_tools.display_benchmark_results import display_benchmark_results
+from examples.provider.dict_t_v_o_values import DictTVOValuesProvider
+from examples.provider.dict_t_v_o_values_sorted import DictTVOValuesSortedProvider
+from script_benchmark_tools.run_benchmarks import run_benchmarks
+from script_benchmark_tools.script import Script
 
 
 def sarcoma(arr):

@@ -1,6 +1,5 @@
-from operator import itemgetter
 
-from table import Table
+from terminal_table import Table
 
 
 def display_benchmark_results(results):

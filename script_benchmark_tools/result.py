@@ -1,4 +1,4 @@
-from script import Script
+from script_benchmark_tools.script import Script
 
 
 class Result:

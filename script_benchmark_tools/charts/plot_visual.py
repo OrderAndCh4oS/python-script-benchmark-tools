@@ -23,3 +23,4 @@ def display_benchmark_plot(benchmarks, title):
     plt.title(title)
     plt.legend()
     plt.show()
+

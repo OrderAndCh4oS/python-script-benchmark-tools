@@ -1,4 +1,4 @@
-from kwargs_provider.kwargs_provider import KwargsProvider
+from script_benchmark_tools.kwargs_provider import KwargsProvider
 
 
 class RangeProvider(KwargsProvider):

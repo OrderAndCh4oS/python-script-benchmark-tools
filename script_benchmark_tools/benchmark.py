@@ -1,5 +1,5 @@
-from result import Result
-from timer import timer
+from script_benchmark_tools.result import Result
+from script_benchmark_tools.timer import timer
 
 
 def benchmark(script, kwargs, n_runs=1000):
@@ -9,3 +9,4 @@ def benchmark(script, kwargs, n_runs=1000):
         run_times.append(time)
 
     return Result(script, run_times, n_runs)
+

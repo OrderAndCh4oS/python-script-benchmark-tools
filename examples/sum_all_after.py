@@ -1,13 +1,13 @@
 import numpy as np
 
-from charts.plot_visual import display_benchmark_plot
-from display_benchmark_results import display_benchmark_results
-from kwargs_provider.list_provider import ListProvider
-from kwargs_provider.np_arange_provider import NpARangeProvider
-from kwargs_provider.np_array_provider import NpArrayProvider
-from kwargs_provider.range_provider import RangeProvider
-from run_benchmarks import run_benchmarks
-from script import Script
+from script_benchmark_tools.charts import display_benchmark_plot
+from script_benchmark_tools.display_benchmark_results import display_benchmark_results
+from script_benchmark_tools.kwargs_provider import ListProvider
+from script_benchmark_tools.kwargs_provider import NpARangeProvider
+from script_benchmark_tools.kwargs_provider import NpArrayProvider
+from script_benchmark_tools.kwargs_provider import RangeProvider
+from script_benchmark_tools.run_benchmarks import run_benchmarks
+from script_benchmark_tools.script import Script
 
 
 def reversed_loop(arr):
