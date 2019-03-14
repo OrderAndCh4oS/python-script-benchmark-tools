@@ -10,7 +10,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='script_benchmark_tools',
-    version='0.1.0',
+    version='0.3.3',
     description='Benchmark Python Scripts',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -28,7 +28,7 @@ setup(
     keywords='table print development display terminal command-line-tools',
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     python_requires='>=3.5, <4',
-    install_requires=['ansi_colours'],
+    install_requires=['ansi_colours', 'terminal_table', 'matplotlib', 'numpy'],
     extras_require={
         'dev': ['check-manifest'],
         'test': ['coverage'],
