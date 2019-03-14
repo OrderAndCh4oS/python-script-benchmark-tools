@@ -55,4 +55,4 @@ N = 1000
 |  0.001787901  |  0.009231312  |  0.057305098  |  insertion_sort  |  sarcoma  |
 |  0.037415981  |  0.047663388  |  0.092668772  |  selection_sort  |  sarcoma  |
 
-
+![Benchmark Plot](https://github.com/sarcoma/python-script-benchmark-tools/blob/master/examples/benchmark.png)
