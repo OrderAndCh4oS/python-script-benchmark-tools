@@ -1,5 +1,6 @@
 
 from terminal_table import Table
+from ansi_colours import AnsiColours as Colour
 
 
 def display_benchmark_results(results):
@@ -19,4 +20,4 @@ def display_benchmark_results(results):
     results.sort(key=lambda r: r.min())
     rows = [row(result) for result in results]
 
-    print(Table.create(rows, headers()))
+    print(Table.create(rows, headers(), column_colours=[Colour.green, Colour.yellow, Colour.red]))
