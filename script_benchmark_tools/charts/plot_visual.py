@@ -15,9 +15,12 @@ def make_plots(benchmarks):
     return plots.items()
 
 
-def display_benchmark_plot(benchmarks, title):
+def display_benchmark_plot(benchmarks, title, loglog=False):
     for name, values in make_plots(benchmarks):
-        plt.plot(values[0], values[1], label=name)
+        if loglog:
+            plt.loglog(values[0], values[1], label=name)
+        else:
+            plt.plot(values[0], values[1], label=name)
     plt.xlabel('n')
     plt.ylabel('min')
     plt.title(title)

@@ -1,7 +1,8 @@
 
 # Always prefer setuptools over distutils
-from setuptools import setup, find_packages
 from os import path
+
+from setuptools import setup, find_packages
 
 here = path.abspath(path.dirname(__file__))
 
@@ -10,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='script_benchmark_tools',
-    version='0.3.3',
+    version='0.3.4',
     description='Benchmark Python Scripts',
     long_description=long_description,
     long_description_content_type='text/markdown',
