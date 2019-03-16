@@ -12,7 +12,7 @@ def display_benchmark_results(results):
 def benchmark_results(results):
     headers, rows = make_benchmark_results(results)
 
-    return Table.create(rows, headers())
+    return Table.create(rows, headers(), use_ansi=False)
 
 
 def make_benchmark_results(results):
