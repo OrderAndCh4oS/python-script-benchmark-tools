@@ -4,11 +4,18 @@ from terminal_table import Table
 
 
 def display_benchmark_results(results):
-    print(benchmark_results(results))
+    headers, rows = make_benchmark_results(results)
+
+    print(Table.create(rows, headers(), column_colours=[Colour.green, Colour.yellow, Colour.red]))
 
 
 def benchmark_results(results):
+    headers, rows = make_benchmark_results(results)
 
+    return Table.create(rows, headers())
+
+
+def make_benchmark_results(results):
     def headers():
         return 'min', 'avg', 'max', 'func', 'name'
 
@@ -23,5 +30,4 @@ def benchmark_results(results):
 
     results.sort(key=lambda r: r.min())
     rows = [row(result) for result in results]
-
-    return Table.create(rows, headers(), column_colours=[Colour.green, Colour.yellow, Colour.red])
+    return headers, rows

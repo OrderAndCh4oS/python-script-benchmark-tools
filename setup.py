@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='script_benchmark_tools',
-    version='0.3.6',
+    version='0.3.8',
     description='Benchmark Python Scripts',
     long_description=long_description,
     long_description_content_type='text/markdown',
