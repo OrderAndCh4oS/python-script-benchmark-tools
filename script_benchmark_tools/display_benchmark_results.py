@@ -1,9 +1,13 @@
 
-from terminal_table import Table
 from ansi_colours import AnsiColours as Colour
+from terminal_table import Table
 
 
 def display_benchmark_results(results):
+    print(benchmark_results(results))
+
+
+def benchmark_results(results):
 
     def headers():
         return 'min', 'avg', 'max', 'func', 'name'
@@ -20,4 +24,4 @@ def display_benchmark_results(results):
     results.sort(key=lambda r: r.min())
     rows = [row(result) for result in results]
 
-    print(Table.create(rows, headers(), column_colours=[Colour.green, Colour.yellow, Colour.red]))
+    return Table.create(rows, headers(), column_colours=[Colour.green, Colour.yellow, Colour.red])

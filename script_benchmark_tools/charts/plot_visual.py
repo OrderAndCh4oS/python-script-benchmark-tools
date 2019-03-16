@@ -16,6 +16,11 @@ def make_plots(benchmarks):
 
 
 def display_benchmark_plot(benchmarks, title, loglog=False, stylesheet='Solarize_Light2'):
+    plot_results(benchmarks, title, loglog, stylesheet)
+    plt.show()
+
+
+def plot_results(benchmarks, title, loglog=False, stylesheet='Solarize_Light2'):
     with plt.style.context(stylesheet):
         for name, values in make_plots(benchmarks):
             if loglog:
@@ -26,5 +31,4 @@ def display_benchmark_plot(benchmarks, title, loglog=False, stylesheet='Solarize
         plt.ylabel('min')
         plt.title(title)
         plt.legend()
-    plt.show()
-
+    return plt
