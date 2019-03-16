@@ -2,11 +2,11 @@ import numpy as np
 
 from script_benchmark_tools.charts import display_benchmark_plot
 from script_benchmark_tools.display_benchmark_results import display_benchmark_results
+from script_benchmark_tools.execute_benchmarks import execute_benchmarks
 from script_benchmark_tools.kwargs_provider import ListProvider
 from script_benchmark_tools.kwargs_provider import NpARangeProvider
 from script_benchmark_tools.kwargs_provider import NpArrayProvider
 from script_benchmark_tools.kwargs_provider import RangeProvider
-from script_benchmark_tools.run_benchmarks import run_benchmarks
 from script_benchmark_tools.script import Script
 
 
@@ -83,22 +83,22 @@ def student(arr):
 
 def run_scripts_with_n_sized_list(scripts, n):
     arr_provider = ListProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 100)
+    return n, execute_benchmarks(scripts, arr_provider, 100)
 
 
 def run_scripts_with_n_sized_range(scripts, n):
     arr_provider = RangeProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 100)
+    return n, execute_benchmarks(scripts, arr_provider, 100)
 
 
 def run_scripts_with_n_sized_np_arange(scripts, n):
     arr_provider = NpARangeProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 100)
+    return n, execute_benchmarks(scripts, arr_provider, 100)
 
 
 def run_scripts_with_n_sized_np_array(scripts, n):
     arr_provider = NpArrayProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 100)
+    return n, execute_benchmarks(scripts, arr_provider, 100)
 
 
 if __name__ == '__main__':

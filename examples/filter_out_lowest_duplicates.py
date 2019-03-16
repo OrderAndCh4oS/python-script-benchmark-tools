@@ -1,11 +1,11 @@
 from itertools import groupby
 from operator import itemgetter
 
-from script_benchmark_tools.charts.plot_visual import display_benchmark_plot
-from script_benchmark_tools.display_benchmark_results import display_benchmark_results
 from examples.provider.dict_t_v_o_values import DictTVOValuesProvider
 from examples.provider.dict_t_v_o_values_sorted import DictTVOValuesSortedProvider
-from script_benchmark_tools.run_benchmarks import run_benchmarks
+from script_benchmark_tools.charts.plot_visual import display_benchmark_plot
+from script_benchmark_tools.display_benchmark_results import display_benchmark_results
+from script_benchmark_tools.execute_benchmarks import execute_benchmarks
 from script_benchmark_tools.script import Script
 
 
@@ -118,12 +118,12 @@ def patrick_artner(arr):
 
 def run_scripts_with_n_sized_sorted_list(scripts, n):
     arr_provider = DictTVOValuesSortedProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 100)
+    return n, execute_benchmarks(scripts, arr_provider, 100)
 
 
 def run_scripts_with_n_sized_unsorted_list(scripts, n):
     arr_provider = DictTVOValuesProvider(n)
-    return n, run_benchmarks(scripts, arr_provider, 100)
+    return n, execute_benchmarks(scripts, arr_provider, 100)
 
 
 if __name__ == '__main__':
