@@ -3,8 +3,8 @@ from operator import itemgetter
 
 from examples.provider.dict_t_v_o_values import DictTVOValuesProvider
 from examples.provider.dict_t_v_o_values_sorted import DictTVOValuesSortedProvider
+from script_benchmark_tools.benchmark_results import display_benchmark_results
 from script_benchmark_tools.charts.plot_visual import display_benchmark_plot
-from script_benchmark_tools.display_benchmark_results import display_benchmark_results
 from script_benchmark_tools.execute_benchmarks import execute_benchmarks
 from script_benchmark_tools.script import Script
 

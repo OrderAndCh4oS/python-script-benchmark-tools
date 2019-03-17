@@ -1,9 +1,10 @@
+import os
 from copy import copy
 
 from terminal_table import Table
 
+from script_benchmark_tools.benchmark_results import benchmark_results
 from script_benchmark_tools.charts.plot_visual import plot_results
-from script_benchmark_tools.display_benchmark_results import benchmark_results
 
 
 def generate_benchmarks(
@@ -38,6 +39,8 @@ def generate_benchmarks(
     for n, result in results:
         output += 'N = %d\n------\n\n' % n
         output += benchmark_results(result) + '\n'
+    if not os.path.isdir('results'):
+        os.mkdir('results', 0o644)
     with open('results/%s.md' % filename, 'w') as f:
         f.write(output)
     plot = plot_results(results, title, loglog=True)

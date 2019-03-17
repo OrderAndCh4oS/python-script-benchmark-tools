@@ -1,7 +1,7 @@
 import numpy as np
 
+from script_benchmark_tools.benchmark_results import display_benchmark_results
 from script_benchmark_tools.charts import display_benchmark_plot
-from script_benchmark_tools.display_benchmark_results import display_benchmark_results
 from script_benchmark_tools.execute_benchmarks import execute_benchmarks
 from script_benchmark_tools.kwargs_provider import ListProvider
 from script_benchmark_tools.kwargs_provider import NpARangeProvider
