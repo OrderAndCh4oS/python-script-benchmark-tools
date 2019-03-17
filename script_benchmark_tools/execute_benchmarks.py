@@ -3,7 +3,6 @@ from script_benchmark_tools.kwargs_provider.kwargs_provider import KwargsProvide
 
 
 def execute_benchmarks(scripts, kwargs_generator: KwargsProvider, n=1000):
-
     kwargs = kwargs_generator.get()
 
     benchmarks = []

@@ -11,11 +11,11 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='script_benchmark_tools',
-    version='0.5.1',
+    version='0.6.7',
     description='Benchmark Python Scripts',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/sarcoma/python-scrhttps://github.com/sarcoma/python-script-benchmark-tools',
+    url='https://github.com/sarcoma/python-script-benchmark-tools',
     author_email='sean@orderandchaoscreative.com',
     classifiers=[
         'Development Status :: 3 - Alpha',

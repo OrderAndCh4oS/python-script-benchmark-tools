@@ -1,18 +1,15 @@
-
 from ansi_colours import AnsiColours as Colour
 from terminal_table import Table
 
 
 def display_benchmark_results(results):
+    print(benchmark_results(results, use_ansi=True))
+
+
+def benchmark_results(results, use_ansi=False):
     headers, rows = make_benchmark_results(results)
 
-    print(Table.create(rows, headers(), column_colours=[Colour.green, Colour.yellow, Colour.red]))
-
-
-def benchmark_results(results):
-    headers, rows = make_benchmark_results(results)
-
-    return Table.create(rows, headers(), use_ansi=False)
+    return Table.create(rows, headers(), column_colours=[Colour.green, Colour.yellow, Colour.red], use_ansi=use_ansi)
 
 
 def make_benchmark_results(results):

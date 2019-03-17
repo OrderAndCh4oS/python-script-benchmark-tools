@@ -12,9 +12,9 @@ def plot(points, max_x=10000, max_y=10000):
 
     for row in grid[::-1]:
         for col in row:
-            print(col,end='')
+            print(col, end='')
         print('')
 
 
 if __name__ == '__main__':
-    plot([[x, int(math.sin(math.radians(x*6)) * 1000)] for x in range(50)], 50, 2250)
+    plot([[x, int(math.sin(math.radians(x * 6)) * 1000)] for x in range(50)], 50, 2250)

@@ -11,4 +11,3 @@ def benchmark(script, kwargs, n_runs=1000):
         run_times.append(time)
 
     return Result(script, run_times, n_runs)
-
