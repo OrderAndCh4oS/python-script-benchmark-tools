@@ -1,12 +1,11 @@
 import numpy as np
 
 from script_benchmark_tools.benchmark_results import display_benchmark_results
-from script_benchmark_tools.charts import display_benchmark_plot
-from script_benchmark_tools.execute_benchmarks import execute_benchmarks
-from script_benchmark_tools.kwargs_provider import ListProvider
-from script_benchmark_tools.kwargs_provider import NpARangeProvider
-from script_benchmark_tools.kwargs_provider import NpArrayProvider
-from script_benchmark_tools.kwargs_provider import RangeProvider
+from script_benchmark_tools.charts.plot_visual import display_benchmark_plot
+from script_benchmark_tools.run_scripts.run_scripts_with_n_sized_list import run_scripts_with_n_sized_list
+from script_benchmark_tools.run_scripts.run_scripts_with_n_sized_np_arange import run_scripts_with_n_sized_np_arange
+from script_benchmark_tools.run_scripts.run_scripts_with_n_sized_np_array import run_scripts_with_n_sized_np_array
+from script_benchmark_tools.run_scripts.run_scripts_with_n_sized_range import run_scripts_with_n_sized_range
 from script_benchmark_tools.script import Script
 
 
@@ -79,26 +78,6 @@ def stuart_two(arr):
 
 def student(arr):
     return [sum(arr[i:]) for i in range(len(arr))]
-
-
-def run_scripts_with_n_sized_list(scripts, n):
-    arr_provider = ListProvider(n)
-    return n, execute_benchmarks(scripts, arr_provider, 100)
-
-
-def run_scripts_with_n_sized_range(scripts, n):
-    arr_provider = RangeProvider(n)
-    return n, execute_benchmarks(scripts, arr_provider, 100)
-
-
-def run_scripts_with_n_sized_np_arange(scripts, n):
-    arr_provider = NpARangeProvider(n)
-    return n, execute_benchmarks(scripts, arr_provider, 100)
-
-
-def run_scripts_with_n_sized_np_array(scripts, n):
-    arr_provider = NpArrayProvider(n)
-    return n, execute_benchmarks(scripts, arr_provider, 100)
 
 
 if __name__ == '__main__':
